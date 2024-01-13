@@ -17,6 +17,7 @@ class PhonesResource extends JsonResource
         return [
             'id'            => $this->id,
             'country'       => $this->country,
+            'state'         => $this->state,
             'country_code'  => $this->country_code,
             'phone'         => $this->phone_number,
         ];

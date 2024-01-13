@@ -29,7 +29,7 @@ function createRow(rowData) {
     var newRow = '<tr>' +
         '<td>' + rowData.id + '</td>' +
         '<td>' + rowData.country + '</td>' +
-        '<td>' + `OK` + '</td>' +
+        '<td>' + rowData.state + '</td>' +
         '<td>' + rowData.country_code + '</td>' +
         '<td>' + rowData.phone + '</td>' +
         '</tr>';
