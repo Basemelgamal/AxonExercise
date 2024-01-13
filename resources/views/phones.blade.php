@@ -14,18 +14,20 @@
             <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                     <div class="col-sm-12 col-md-6 mb-3">
-                        <select id="country_selection" class="form-control">
+                        <select id="country_selection" onchange="country_numbers()" class="form-control">
                             <option value="" disabled selected>---Select Country---</option>
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            <option value="Morocco">Morocco</option>
+                            <option value="Cameroon">Cameroon</option>
+                            <option value="Ethiopia">Ethiopia</option>
+                            <option value="Mozambique">Mozambique</option>
+                            <option value="Uganda">Uganda</option>
                         </select>
                     </div>
                     <div class="col-sm-12 col-md-6">
-                        <select id="valid_selection" class="form-control">
+                        <select id="valid_selection" onchange="valid_numbers()" class="form-control">
                             <option value="" disabled selected>---Valid Country Number---</option>
-                            <option value="0">Valid</option>
-                            <option value="1">Not valid</option>
+                            <option value="ok">OK</option>
+                            <option value="nok">NOK</option>
                         </select>
                     </div>
                 </div>
@@ -39,9 +41,6 @@
                                     <th class="sorting" tabindex="2" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">State</th>
                                     <th class="sorting" tabindex="3" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Country Code</th>
                                     <th class="sorting" tabindex="2" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Phone num</th>
-                                    {{--  <th class="sorting" tabindex="2" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Count</th>
-                                    <th class="sorting" tabindex="2" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Salaries</th>
-                                    <th class="sorting" tabindex="5" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Created At</th>  --}}
                                 </tr>
                             </thead>
                             <tbody id="phone_numbers_table_rows">

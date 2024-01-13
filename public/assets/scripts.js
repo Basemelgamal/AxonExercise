@@ -1,15 +1,15 @@
 var currentPage = 1;
 
-function fetchData(page){
-    console.log('current page: '+page);
+function fetchData(page, state = null, country = null){
+    state = $('#valid_selection').val();
+    country = $('#country_selection').val();
+    console.log('current page: '+page, 'state: '+state, 'country: '+ country);
     $.ajax({
         url: '/phone_numbers',
         type: 'GET',
-        data: { page: page },
+        data: {page: page, state: state, country: country},
         success: function (data) {
-            if(data.data.length > 0){
-                updateTable(data.data);
-            }
+            updateTable(data.data);
         }
     });
 }
@@ -17,7 +17,6 @@ function fetchData(page){
 function updateTable(data) {
     var tableBody = $('#phone_numbers_table_rows');
     tableBody.empty();
-    console.log(data);
     data.forEach(function (v ,i) {
         var newRow = createRow(v);
         tableBody.append(newRow);
@@ -53,3 +52,10 @@ function prevPage(){
     }
 }
 
+function valid_numbers(){
+    fetchData(currentPage);
+}
+
+function country_numbers(){
+    fetchData(currentPage);
+}

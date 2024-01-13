@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\PhoneNumberService;
 use App\Http\Resources\PhonesResource;
-use App\Models\Customer;
-use App\Models\PhoneNumber;
 use Illuminate\Http\Request;
 
 class PhoneNumberController extends Controller
 {
+    protected $phoneNumberService;
+    public function __construct(PhoneNumberService $phoneNumberService){
+        $this->phoneNumberService = $phoneNumberService;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -21,10 +25,7 @@ class PhoneNumberController extends Controller
 
     public function getDataTable(Request $request)
     {
-        $perPage = $request->input('perPage', 10);
-
-        $customers = Customer::paginate($perPage);
-
+        $customers = $this->phoneNumberService->index($request);
         $results = PhonesResource::collection($customers);
         return response()->json([
                 'data'      =>  $results,
@@ -35,71 +36,5 @@ class PhoneNumberController extends Controller
                     'total' => $customers->total(),
                 ],
             ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\PhoneNumber  $phoneNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function show(PhoneNumber $phoneNumber)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\PhoneNumber  $phoneNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(PhoneNumber $phoneNumber)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PhoneNumber  $phoneNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, PhoneNumber $phoneNumber)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\PhoneNumber  $phoneNumber
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(PhoneNumber $phoneNumber)
-    {
-        //
     }
 }
