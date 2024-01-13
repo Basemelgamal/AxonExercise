@@ -3,7 +3,6 @@ var currentPage = 1;
 function fetchData(page, state = null, country = null){
     state = $('#valid_selection').val();
     country = $('#country_selection').val();
-    console.log('current page: '+page, 'state: '+state, 'country: '+ country);
     $.ajax({
         url: '/phone_numbers',
         type: 'GET',
